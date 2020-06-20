@@ -34,6 +34,26 @@ void egomaniacNumber(){
     printf("El numero %d %s\n",number, number == calculateEgomaniacNumber(chainNum) ? "es EGOLATRA" : "NO es EGOLATRA");
 }
 
+int calculateScore(char chain[]){
+    int cont = 0;
+    int suma = 0;
+    for(int i = 0; i < strlen(chain)-1; i++){
+        if (chain[i] == 'o' || chain[i] == 'O'){
+            cont++;
+            suma = cont+suma;
+        }else{
+            cont = 0;
+        }
+    }
+    return suma;
+}
+
+void score(){
+    char chain[30];
+    printf("%s","Digite la cadena:");
+    fgets(chain, 30, stdin);
+    printf("El puntaje es: %d \n", calculateScore(chain));
+}
 void mainMenu(){
     char option;
     do{
@@ -68,7 +88,8 @@ void mainMenu(){
                 printf("%s","**F(n)**");
                 break;
             case '7':
-                printf("%s","**Juego de Puntajes**\n\n");                
+                printf("%s","**Juego de Puntajes**\n\n");              
+                score();
                 break;
         }
     }while (toupper(option) != 'S');
