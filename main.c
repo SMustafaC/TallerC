@@ -17,6 +17,22 @@
 #include <string.h>
 #include <math.h>
 
+int calculateEgomaniacNumber(char chainNumber[]){
+    int nume;
+    int suma=0;
+    for(int i = 0; i<strlen(chainNumber)-1; i++){
+        nume = chainNumber[i] - '0';
+        suma+=pow(nume,strlen(chainNumber)-1);
+    }
+    return suma;
+}
+void egomaniacNumber(){
+    char chainNum[30];
+    printf("%s","Digite el numero:");
+    fgets(chainNum,30,stdin);
+    int number = atoi(chainNum);
+    printf("El numero %d %s\n",number, number == calculateEgomaniacNumber(chainNum) ? "es EGOLATRA" : "NO es EGOLATRA");
+}
 
 void mainMenu(){
     char option;
@@ -37,7 +53,7 @@ void mainMenu(){
                 break;
             case '2':
                 printf("%s","**Numero Egolatra**\n");
-                
+                egomaniacNumber();                
                 break;
             case '3':
                 printf("%s","**Numero Magico**\n");
