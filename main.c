@@ -96,8 +96,7 @@ void mainMenu(){
 
 }
 
-int main() {
-    //ahí estaaaaaaaaaaaaaaaaaaaaaaaa
+int main() {       
     mainMenu();
     return (EXIT_SUCCESS);
 }
