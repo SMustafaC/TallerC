@@ -97,6 +97,7 @@ void mainMenu(){
         switch (option) {
             case '1':
                 printf("%s","**Numeros Primos Descendentemente**\n");
+                cousingNumber();
                 break;
             case '2':
                 printf("%s","**Numero Egolatra**\n");
