@@ -54,6 +54,33 @@ void score(){
     fgets(chain, 30, stdin);
     printf("El puntaje es: %d \n", calculateScore(chain));
 }
+
+void cousingNumber() {
+    int numOne;
+    int contador; 
+    int primo;
+    
+    printf("Ingrese un valor\n");
+    scanf("%i", &numOne);
+    printf("\nNumeros primos desde 1 hasta %i\n", numOne);
+    
+    
+    for(int i = 2; i <= numOne; i++) {
+        primo = 1;
+        contador = 2;
+        
+        while(contador <= i/2 && primo) {
+            if(i % contador == 0) {
+                primo = 0;
+            }
+            contador++;
+        }
+        if(primo) {
+            printf("%d\n", i);
+        }
+    } 
+}
+
 void mainMenu(){
     char option;
     do{
