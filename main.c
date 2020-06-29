@@ -16,6 +16,15 @@
 #include <ctype.h>
 #include <string.h>
 #include <math.h>
+#include <stdbool.h>
+bool validateNumbers(char num[]){
+    for (int i = 0; i < strlen(num)-1; i++){
+        if(!isdigit(num[i]) ) {
+            return false;
+        }
+    }
+    return true;
+}
 
 int calculateEgomaniacNumber(char chainNumber[]){
     int nume;
@@ -31,7 +40,7 @@ void egomaniacNumber(){
     printf("%s","Digite el numero:");
     fgets(chainNum,30,stdin);
     int number = atoi(chainNum);
-    printf("El numero %d %s\n",number, number == calculateEgomaniacNumber(chainNum) ? "es EGOLATRA" : "NO es EGOLATRA");
+    validateNumbers(chainNum) ? printf("El numero %d %s\n",number, number == calculateEgomaniacNumber(chainNum) ? "es EGOLATRA" : "NO es EGOLATRA") : printf("%s","¡¡ERROR!!\nIngrese unicamente valores numericos");
 }
 
 int calculateScore(char chain[]){
@@ -62,9 +71,9 @@ void cousingNumber() {
     
     printf("Ingrese un valor\n");
     scanf("%i", &numOne);
-    printf("\nNúmeros primos ordenados descendentemente desde %i\n", numOne);
-    
-    
+    getchar();
+    printf("Números primos ordenados descendentemente desde %i\n", numOne);
+        
     for(int i = numOne; i >= 2; i--) {
         primo = 1;
         contador = 2;
@@ -76,7 +85,7 @@ void cousingNumber() {
             contador++;
         }
         if(primo) {
-            printf("%d\n", i);
+            printf("%d \t", i);
         }
     }
 }
@@ -93,7 +102,7 @@ void magicNumbers() {
     
     printf("Digite la cantidad de cifras del número mágico\n");
     scanf("%i", &num);
-    
+    getchar();
     int nOne[num];
     int nTwo[num];
     int vector[num];
@@ -104,6 +113,7 @@ void magicNumbers() {
     for(int i = 0; i < num; i++) {
         printf("Cifra %d: ", cont);
         scanf("%d", &n);
+        getchar();
         vector[i] = n;
         cont++;
     }
