@@ -21,16 +21,18 @@
 /*
  * Funciones para validación de datos.
  */
-bool validateChain(char chain[]){
-    
+bool validateChain(char chain[]){  
+    bool aux;
     for (int i = 0; i < strlen(chain)-1; i++){
         chain[i] = toupper(chain[i]);
-        while (chain[i] == 'O' || chain[i] == 'X' ){
-            return true;
-        }
-        break;
+        if(chain[i] == 'O' || chain[i] == 'X' ){
+            aux = true;
+        }else{
+            aux = false;
+            break;
+        }        
     }
-    return false;
+    return aux;
 }
 
 bool validateNumbers(char num[]){
