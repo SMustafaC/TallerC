@@ -18,6 +18,21 @@
 #include <math.h>
 #include <stdbool.h>
 
+/*
+ * Funciones para validación de datos.
+ */
+bool validateChain(char chain[]){
+    
+    for (int i = 0; i < strlen(chain)-1; i++){
+        chain[i] = toupper(chain[i]);
+        while (chain[i] == 'O' || chain[i] == 'X' ){
+            return true;
+        }
+        break;
+    }
+    return false;
+}
+
 bool validateNumbers(char num[]){
     for (int i = 0; i < strlen(num)-1; i++){
         if(!isdigit(num[i]) ) {
@@ -26,6 +41,9 @@ bool validateNumbers(char num[]){
     }
     return true;
 }
+/*
+ * FIN funciones validación de datos.
+ */
 
 int calculateEgomaniacNumber(char chainNumber[]){
     int nume;
@@ -62,7 +80,11 @@ void score(){
     char chain[30];
     printf("%s","Digite la cadena:");
     fgets(chain, 30, stdin);
-    printf("El puntaje es: %d\n", calculateScore(chain));
+    if (validateChain(chain)){
+        printf("El puntaje es: %d \n", calculateScore(chain));
+    }else{
+        printf("%s","!!ERROR¡¡\nLa cadena solo debe contener las letras 'X' y/o 'O'\n");
+    }
 }
 
 void cousingNumber() {
