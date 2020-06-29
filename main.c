@@ -114,122 +114,46 @@ void cousingNumber() {
     }
 }
 
-void magicNumbers() {
-    int num = 0;
-    int aux = 0;
-    int cont = 0;
-    int n = 0;
-    int numOne = 0;
-    int numTwo = 0;
-    int rest = 0;
-    int numVec = 0;
-    
-    printf("Digite la cantidad de cifras del número mágico\n");
-    scanf("%i", &num);
-    getchar();
-    int nOne[num];
-    int nTwo[num];
-    int vector[num];
-    int auxVect[num];
-    
-    printf("Digite de cifra en cifra el número mágico\n");
-    
-    for(int i = 0; i < num; i++) {
-        printf("Cifra %d: ", cont);
-        scanf("%d", &n);
-        getchar();
-        vector[i] = n;
-        cont++;
-    }
-    
-    /**
-     * Numero ingresado, listo para ordenar
-     * 
-     */
-    printf("\nEl número es: \n");
-    for(int i = 0; i < num; i++) {
-        printf("%d ", vector[i]);
-    }
-    
-    /**
-     * Ordenamiento Ascendente
-     * 
-     */
-    
-    for(int i = 0; i < num; i++) {
-        auxVect[i] = vector[i];
-    }
-    
-    for(int i = 0; i < num; i++) {
-        for(int j = 0; j < num - (i+1); j++) {
-            if(auxVect[j] > auxVect[j+1]) {
-                aux = auxVect[j];
-                auxVect[j] = auxVect[j+1];
-                auxVect[j+1] = aux;
+int descendingOrdering(char chain[]){
+    int number;
+    for(int i = 0; i<strlen(chain)-2;i++){
+        for(int j=i+1; j<strlen(chain)-1;j++){
+            if(chain[i] > chain[j]){
+                char varAux;
+                varAux = chain[i];
+                chain[i] = chain[j];
+                chain[j] = varAux;
             }
         }
     }
-    
-    printf("\n\nNúmero ordenado Ascendente(?)\n");
-    
-    for(int i = 0; i < num; i++) {
-        printf("%d ", auxVect[i]);
-        nOne[i] = auxVect[i];
-    }
-    
-    /**
-     * Ordenamiento Descendente
-     * 
-     */
-    for(int i = 0; i < num; i++) {
-        for(int j = 0; j < num - (i+1); j++) {
-            if(auxVect[j] < auxVect[j+1]) {
-                aux = auxVect[j];
-                auxVect[j] = auxVect[j+1];
-                auxVect[j+1] = aux;
+    number = atoi(chain);
+    return number;
+}
+int ascendingOrdering(char chain[]){
+    int number;
+    for(int i = 0; i<strlen(chain)-2;i++){
+        for(int j=i+1; j<strlen(chain)-1;j++){
+            if(chain[i] < chain[j]){
+                char varAux;
+                varAux = chain[i];
+                chain[i] = chain[j];
+                chain[j] = varAux;
             }
         }
     }
-    
-    printf("\n\nNúmero ordenado Descendente(?)\n");
-    
-    for(int i = 0; i < num; i++) {
-        printf("%d ", auxVect[i]);
-        nTwo[i] = auxVect[i];
-    }
-    
-    
-    /**
-     * Conversion de array a integer
-     * 
-     */
-    for(int i = 0; i < num; i++) {
-        numVec = 10 * numVec + vector[i];
-    }
-    
-    for(int i = 0; i < num; i++) {
-        numOne = 10 * numOne + nOne[i];
-    }
-    
-    for(int i = 0; i < num; i++) {
-        numTwo = 10 * numTwo + nTwo[i];
-    }
-    
-    
-    /**
-     * Resta de numero descendente con numero ascendente
-     * 
-     */
-    rest = (numTwo - numOne);
-    
-    printf("\n\nResta de número descendente y ascendente: \n%i\n", rest);
-    
-    if(rest == numVec) {
-        printf("\nEl número ingresado, SÍ es número mágico\n");
-    } else {
-        printf("\nEl número ingresado, NO es número mágico\n");
-    }
-    
+    number = atoi(chain);
+    return number;
+}
+int calculateMagicNumber(int biggerNum, int lowerNum){
+    int substraction =biggerNum - lowerNum;
+    return substraction;
+}
+void magicNumber(){
+    char chain[30];
+    printf("%s","Digite el número:");
+    fgets(chain,30,stdin);
+    int number = atoi(chain);
+    validateNumbers(chain) ? calculateMagicNumber(ascendingOrdering(chain),descendingOrdering(chain)) == number ? printf("%s,%d,%s","El numero ",number," es MAGICO\n"): printf("%s %d %s","El numero ",number," NO es MAGICO\n") : printf("%s","ERROR");   
 }
 void mainMenu(){
     char option;
@@ -257,7 +181,7 @@ void mainMenu(){
                 break;
             case '3':
                 printf("%s","**Numero Magico**\n");
-                magicNumbers();
+                magicNumber();
                 break;
             case '4':
                 printf("%s","**Indice Masa Corporal**\n");
