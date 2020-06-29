@@ -17,6 +17,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
+
 bool validateNumbers(char num[]){
     for (int i = 0; i < strlen(num)-1; i++){
         if(!isdigit(num[i]) ) {
@@ -40,7 +41,7 @@ void egomaniacNumber(){
     printf("%s","Digite el numero:");
     fgets(chainNum,30,stdin);
     int number = atoi(chainNum);
-    validateNumbers(chainNum) ? printf("El numero %d %s\n",number, number == calculateEgomaniacNumber(chainNum) ? "es EGOLATRA" : "NO es EGOLATRA") : printf("%s","¡¡ERROR!!\nIngrese unicamente valores numericos");
+    validateNumbers(chainNum) ? printf("El numero %d %s\n",number, number == calculateEgomaniacNumber(chainNum) ? "es EGOLATRA" : "NO es EGOLATRA") : printf("%s","¡¡ERROR!!\nIngrese unicamente valores numericos\n");
 }
 
 int calculateScore(char chain[]){
@@ -61,32 +62,33 @@ void score(){
     char chain[30];
     printf("%s","Digite la cadena:");
     fgets(chain, 30, stdin);
-    printf("El puntaje es: %d \n", calculateScore(chain));
+    printf("El puntaje es: %d\n", calculateScore(chain));
 }
 
 void cousingNumber() {
-    int numOne;
-    int contador; 
+    char numOne[30];
+    int contador;
     int primo;
-    
-    printf("Ingrese un valor\n");
-    scanf("%i", &numOne);
-    getchar();
-    printf("Números primos ordenados descendentemente desde %i\n", numOne);
-        
-    for(int i = numOne; i >= 2; i--) {
-        primo = 1;
-        contador = 2;
-        
-        while(contador <= i/2 && primo) {
-            if(i % contador == 0) {
-                primo = 0;
+    printf("%s","Ingrese un valor:");
+    fgets(numOne,30,stdin);
+    if(validateNumbers(numOne)){
+        int number = atoi(numOne);
+        printf("Números primos ordenados descendentemente desde %i\n",number);
+        for(int i = number; i >= 1; i--) {
+            primo = 1;
+            contador = 2;
+            while(contador <= i/2 && primo) {
+                if(i % contador == 0) {
+                    primo = 0;
+                }
+                contador++;
             }
-            contador++;
+            if(primo) {
+                printf("%d\t", i);
+            }
         }
-        if(primo) {
-            printf("%d \t", i);
-        }
+    }else{
+         printf("%s","¡¡ERROR!!\nIngrese unicamente valores numericos.\n");
     }
 }
 
@@ -214,8 +216,10 @@ void mainMenu(){
                "1.Numeros Primos\n "
                "2.Numero Egolatra\n "
                "3.Numero Magico\n "
-               "4.Indice Masa Corporal\n "
-               "7.Juego de Puntajes\n "
+               "4.Indice Masa Corporal\n"
+               " 5.Suma Numeros Excluidos\n"
+               " 6.F(n)\n"
+               " 7.Juego de Puntajes\n "
                "Digite: [s/S]-Salir\n");
         scanf("%c",&option);
         getchar();
