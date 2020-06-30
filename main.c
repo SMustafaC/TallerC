@@ -312,6 +312,77 @@ void body_Mass_Index() {
     }
 }
 
+void sum_Excluded_Numbers() {
+    printf("Ingrese los valores del rango numérico\n");
+
+    printf("%s", "Valor 1: ");
+    char chainNumb1[30];
+    fgets(chainNumb1, 30, stdin);
+
+    if (validateNumbers(chainNumb1)) {
+        int num1 = atoi(chainNumb1);
+
+        printf("%s", "Valor 2: ");
+        char chainNumb2[30];
+        fgets(chainNumb2, 30, stdin);
+
+        if (validateNumbers(chainNumb2)) {
+            int num2 = atoi(chainNumb2);
+
+            printf("%s", "Ingrese el numero sin tener en cuenta: ");
+            char chainExc[30];
+            fgets(chainExc, 30, stdin);
+
+            if (validateNumbers(chainExc)) {
+                int contNull = atoi(chainExc);
+                int tam = (num2 - num1) + 1;
+                int valores[tam];
+
+                int longitud = sizeof (valores) / sizeof (valores[0]);
+
+                int cont = 0;
+                for (int i = num1; i <= num2; i++) {
+                    valores[cont] = i;
+                    cont++;
+                }
+
+                int a, b, c, d, e;
+                int contVal;
+                int exc = 0;
+
+                for (int i = 0; i <= (num2 - num1); i++) {
+                    int numero = valores[i];
+
+                    a = numero / 10000;
+                    b = (numero % 10000) / 1000;
+                    c = (numero % 10000) % 1000 / 100;
+                    d = ((numero % 10000) % 1000) % 100 / 10;
+                    e = (((numero % 10000) % 1000) % 100) % 10;
+                    int vector[5] = {a, b, c, d, e};
+
+                    int longitud2 = sizeof (vector) / sizeof (vector[0]);
+
+                    for (int j = 0; j <= longitud2 - 1; j++) {
+                        if (vector[j] == contNull) {
+                            exc++;
+                        } else {
+                            contVal += vector[j];
+                        }
+                    }
+                }
+                printf("La suma es: %d\n", (contVal - 1));
+                printf("No se tuvieron en cuenta %d dígitos", exc);
+            } else {
+                printf("!ERROR¡Ingrese valores enteros");
+            }
+        } else {
+            printf("!ERROR¡Ingrese valores enteros");
+        }
+    } else {
+        printf("!ERROR¡Ingrese valores enteros");
+    }
+}
+
 void mainMenu(){
     char option;
     do{
@@ -345,7 +416,8 @@ void mainMenu(){
                 body_Mass_Index();
                 break;
             case '5':
-                printf("%s","**Suma**");
+                printf("%s","**Suma Numeros Excluidos**");
+                sum_Excluded_Numbers();
                 break;
             case '6':
                 printf("%s","**F(n)**");
