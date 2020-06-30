@@ -235,7 +235,7 @@ void magicNumbers() {
     }
     
     }else{
-        printf("%s","TJODES");
+        printf("%s","!!ERROR¡¡\nSolo ingrese valores numericos");
     }        
 }
 
