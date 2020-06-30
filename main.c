@@ -117,6 +117,7 @@ void cousingNumber() {
 }
 
 void magicNumbers() {
+    char chainNum[30];
     int num = 0;
     int aux = 0;
     int cont = 0;
@@ -126,9 +127,10 @@ void magicNumbers() {
     int rest = 0;
     int numVec = 0;
     
-    printf("Digite la cantidad de cifras del número mágico\n");
-    scanf("%i", &num);
-    getchar();
+    printf("Digite la cantidad de cifras del número mágico\n");    
+    fgets(chainNum,30,stdin);
+    if(validateNumbers(chainNum)){
+    num = atoi(chainNum);
     int nOne[num];
     int nTwo[num];
     int vector[num];
@@ -232,6 +234,9 @@ void magicNumbers() {
         printf("\nEl número ingresado, NO es número mágico\n");
     }
     
+    }else{
+        printf("%s","TJODES");
+    }        
 }
 void mainMenu(){
     char option;
