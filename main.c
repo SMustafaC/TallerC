@@ -239,6 +239,75 @@ void magicNumbers() {
     }        
 }
 
+/**
+ * Método donde se ejecuta la serie fibonacci.
+ * 
+ * Recibe un valor numérico, el cual es la cantidad de veces que se repetira
+ * la serie.
+ * 
+ * Retorna un char con la cadena a buscar.
+ * 
+ * @param num
+ * @return 
+ */
+char* functionFibo(int num) {
+    char* chain = "";
+    char* func1 = "";
+    char* func2 = "";
+    
+    if(num == 0) {
+        chain = "0";
+    }
+    
+    else if(num == 1) {
+        chain = "1";
+    }
+    
+    else if(num >= 2) {
+        func1 = functionFibo(num - 1);
+        func2 = functionFibo(num - 2);
+        const size_t linea1 = strlen(func1);
+        const size_t linea2 = strlen(func2);
+        
+        char* result = malloc(linea1 + linea2 + 1);
+        memcpy(result, func1, linea1);
+        memcpy(result + linea1, func2, linea2 + 1);
+        
+        chain = result;
+    }
+    return chain;
+}
+
+/**
+ * Método para comparar las cadenas y buscar la cadena elegida por el
+ * usuario
+ * 
+ * Recibe dos char, una cadena ingresada por el usuario y otra cadena
+ * que es devuelta del método de la serie fibonacci
+ * 
+ * Retorna un valor entero de la cantidad de veces que se repite la cadena
+ * 
+ * @param chain
+ * @param chain2
+ * @return 
+ */
+
+int comparacion(char* chain, char* chain2) {
+    int cont = 0;
+    char* search = NULL;
+    
+    search = strstr(chain, chain2);
+    
+    while(search != 0) {
+        cont++;
+        search = strstr(search + 1, chain2);
+    }
+    
+    return cont;
+}
+
+
+
 void body_Mass_Index() {
 
     float IMC;
@@ -421,6 +490,19 @@ void mainMenu(){
                 break;
             case '6':
                 printf("%s","**F(n)**");
+                int num = 0;
+                char* chain2 = "";
+                
+                printf("Digite valor de repetición para Serie Fibonacci\n");
+                scanf("%d", &num);
+                printf("Digite la cadena que desea buscar\n");
+                scanf("%s", &chain2);
+                
+                char* chain1 = functionFibo(num);
+                
+                printf("La cadena se repite ");
+                printf("%d", comparacion(chain1, &chain2));
+                printf(" veces en la serie\n");
                 break;
             case '7':
                 printf("%s","**Juego de Puntajes**\n\n");              
