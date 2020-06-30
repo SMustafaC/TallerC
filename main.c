@@ -495,8 +495,10 @@ void mainMenu(){
                 
                 printf("\nDigite valor de repetición para Serie Fibonacci\n");
                 scanf("%d", &num);
+                getchar();
                 printf("Digite la cadena que desea buscar\n");
                 scanf("%s", &chain2);
+                getchar();
                 
                 char* chain1 = functionFibo(num);
                 
