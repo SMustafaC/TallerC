@@ -493,7 +493,7 @@ void mainMenu(){
                 int num = 0;
                 char* chain2 = "";
                 
-                printf("Digite valor de repetición para Serie Fibonacci\n");
+                printf("\nDigite valor de repetición para Serie Fibonacci\n");
                 scanf("%d", &num);
                 printf("Digite la cadena que desea buscar\n");
                 scanf("%s", &chain2);
