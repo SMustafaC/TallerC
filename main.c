@@ -174,7 +174,7 @@ void magicNumbers() {
         }
     }
     
-    printf("\n\nNúmero ordenado Ascendente(?)\n");
+    printf("\n\nNúmero ordenado Ascendente\n");
     
     for(int i = 0; i < num; i++) {
         printf("%d ", auxVect[i]);
@@ -195,7 +195,7 @@ void magicNumbers() {
         }
     }
     
-    printf("\n\nNúmero ordenado Descendente(?)\n");
+    printf("\n\nNúmero ordenado Descendente\n");
     
     for(int i = 0; i < num; i++) {
         printf("%d ", auxVect[i]);
