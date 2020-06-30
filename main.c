@@ -233,6 +233,80 @@ void magicNumbers() {
     }
     
 }
+
+void body_Mass_Index() {
+
+    float IMC;
+    char gender;
+    
+    printf("Ingrese el género (F/M): ");
+    scanf("%c", & gender);
+    getchar();
+
+    printf("%s", "Ingrese la estatura en cm: ");
+    char chainStature[30];
+    fgets(chainStature, 30, stdin);
+
+    if (validateNumbers(chainStature)) {
+        int stature = atoi(chainStature);
+
+        printf("%s", "Ingrese el peso en kg: ");
+        char chainWeight[30];
+        fgets(chainWeight, 30, stdin);
+
+        if (validateNumbers(chainWeight)) {
+            int bodyWeight = atoi(chainWeight);
+            float statureM = ((float) stature / 100);
+            
+            IMC = bodyWeight / (statureM * statureM);
+
+            printf("Su indice de masa corporal es: %f\n", IMC);
+            
+            printf("Su diagnostico es: ");
+
+            if (gender == 'f' || gender == 'F') {
+                if (IMC < 16) {
+                    printf("Desnutricion");
+                } else if (IMC > 16 && IMC < 20) {
+                    printf("Bajo peso");
+                } else if (IMC > 20 && IMC < 24) {
+                    printf("Normal");
+                } else if (IMC > 24 && IMC < 29) {
+                    printf("Sobrepeso");
+                } else if (IMC > 29 && IMC < 34) {
+                    printf("Obesidad");
+                } else if (IMC > 34 && IMC < 39) {
+                    printf("Obesidad marcada");
+                } else if (IMC > 39) {
+                    printf("Obesidad morbida");
+                }
+            } else if (gender == 'm' || gender == 'M') {
+                if (IMC < 17) {
+                    printf("Desnutricion");
+                } else if (IMC > 17 && IMC < 20) {
+                    printf("Bajo peso");
+                } else if (IMC > 20 && IMC < 25) {
+                    printf("Normal");
+                } else if (IMC > 25 && IMC < 30) {
+                    printf("Sobrepeso");
+                } else if (IMC > 30 && IMC < 35) {
+                    printf("Obesidad");
+                } else if (IMC > 35 && IMC < 40) {
+                    printf("Obesidad marcada");
+                } else if (IMC > 40) {
+                    printf("Obesidad morbida");
+                }
+            } else {
+                printf("Genero no reconocido, ingrese M (Masculino) ó F (Femenino)");
+            }
+        } else {
+            printf("!ERROR¡ Ingrese el peso en kilogramos");
+        }
+    } else {
+        printf("!ERROR¡ Ingrese el la estatura en centímetros");
+    }
+}
+
 void mainMenu(){
     char option;
     do{
@@ -263,6 +337,7 @@ void mainMenu(){
                 break;
             case '4':
                 printf("%s","**Indice Masa Corporal**\n");
+                body_Mass_Index();
                 break;
             case '5':
                 printf("%s","**Suma**");
